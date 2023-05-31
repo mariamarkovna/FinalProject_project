@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.$;
@@ -22,14 +23,17 @@ public class UpdateProfilePage {
     private static SelenideElement updateProfileBtn = $x("//a[@id='sw-update-profile-btn']");
 
 
+    @Step("Update profile form is exist")
     public SelenideElement verifyUpdateForm() {
         return $(updateForm);
     }
 
+    @Step("Role form is exist")
     public SelenideElement verifyRoleForm() {
         return $(roleForm);
     }
 
+    @Step("Chose a role")
     public SelenideElement choseARole(){
 
         $(roleInputField).click();
@@ -40,7 +44,7 @@ public class UpdateProfilePage {
 
 
 
-
+    @Step("fill student Update Profile form ")
     public void fillStudUpdateProfileForm(String fullName,String email, String aboutMe,String enternalProfile) {
         choseARole();
         $(fullNameInputField).val(fullName);
@@ -52,11 +56,13 @@ public class UpdateProfilePage {
 
     }
 
+    @Step("enter Email in email field ")
     public void fillEmail(String email) {
         $(emailInputField).click();
         $(emailInputField).val(email);
     }
 
+    @Step("add a photo in Avatar field")
     public void chosePhoto() {
         //$(avatarImageInputField).click();
         SelenideElement photoInput= $(avatarImageInputField);
@@ -65,15 +71,18 @@ public class UpdateProfilePage {
 
     }
 
+    @Step("fill Major field")
     public void fillMajor(String major) {
         $(MajorInputField).click();
         $(MajorInputField).val(major);
     }
 
-
+    @Step("Click Update profile button")
     public void clickUpdateProfileBtn() {
         $(updateProfileBtn).click();
     }
+
+    @Step("Check Update profile")
     public void changeColorBtn() {
         //$(avatarImageInputField).click();
         SelenideElement button= $(updateProfileBtn);
